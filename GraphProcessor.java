@@ -20,9 +20,9 @@ import java.util.function.Supplier;
 import java.util.stream.Stream;import com.sun.media.jfxmedia.events.NewFrameEvent;
 ///////////////////////////////////////////////////////////////////////////////
 //assignment name: p4
-//Author: Tianyuan(Rainer) Yuan
-//Partner:BOWEN ZHANG GRIFF ZHANG JICHEN ZHANG JUNGE ZHANG
-//Email : tyuan22@wisc.edu
+//Author:GRIFF ZHANG
+//Partner:BOWEN ZHANG JICHEN ZHANG JUNGE ZHANG
+//Email : xzhang953@wisc.edu
 //due date: April 15th 2018
 //CS Login: tyuan22
 //Credits: none
