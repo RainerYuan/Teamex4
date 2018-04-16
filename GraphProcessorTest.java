@@ -1,3 +1,14 @@
+///////////////////////////////////////////////////////////////////////////////
+// assignment name: p4
+// Author: JICHEN ZHANG
+// Partner:BOWEN ZHANG GRIFF ZHANG Tianyuan(Rainer) Yuan
+// Email : Jzhang877@wisc.edu
+// due date: April 15th 2018
+// CS Login: tyuan22
+// Credits: none
+// known bugs: none
+//////////////////////////////////////////////////////////////////////////////
+
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.fail;
 
