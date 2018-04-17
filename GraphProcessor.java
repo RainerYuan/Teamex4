@@ -1,30 +1,20 @@
-import java.awt.geom.GeneralPath;
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Comparator;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.Map;
 import java.util.Queue;
 import java.util.Scanner;
-import java.util.Set;
 import java.util.Stack;
-import java.util.TreeMap;
-import java.util.function.Supplier;
-import java.util.stream.Stream;
+
 ///////////////////////////////////////////////////////////////////////////////
 //assignment name: p4
 //Author:GRIFF ZHANG
-//Partner:BOWEN ZHANG JICHEN ZHANG JUNGE ZHANG
+//Partner: Bowen Zhang, Jichen Zhang, JUNGE ZHANG, Tianyuan(Rainer) Yuan
 //Email : xzhang953@wisc.edu
 //due date: April 15th 2018
-//CS Login: tyuan22
 //Credits: none
 //known bugs: none
 //////////////////////////////////////////////////////////////////////////////

@@ -1,34 +1,25 @@
-///////////////////////////////////////////////////////////////////////////////
-// assignment name: p4
-// Author: JICHEN ZHANG
-// Partner:BOWEN ZHANG GRIFF ZHANG Tianyuan(Rainer) Yuan
-// Email : Jzhang877@wisc.edu
-// due date: April 15th 2018
-// CS Login: tyuan22
-// Credits: none
-// known bugs: none
-//////////////////////////////////////////////////////////////////////////////
-
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.fail;
-
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Scanner;
-
 import org.junit.BeforeClass;
 import org.junit.Test;
 
 
-
+///////////////////////////////////////////////////////////////////////////////
+//assignment name: p4
+//Author: Jichen Zhang, Junge Zhang
+//Partner: Bowen Zhang, GRIFF ZHANG, Tianyuan(Rainer) Yuan
+//Email : jzhang877@wisc.edu, jzhang875@wisc.edu
+//due date: April 15th 2018
+//Credits: none
+//known bugs: none
+//////////////////////////////////////////////////////////////////////////////
 /**
  * This is a test class for the graph processor functionalities, from a given
  * path of a dictionary file
- * 
- * @author Jichen Zhang (jzhang877@wisc.edu)
- * 		   Junge Zhang (jzhang875@wisc.edu)
- *
  */
 public class GraphProcessorTest {
 	/**
@@ -46,44 +37,79 @@ public class GraphProcessorTest {
 	}
 
 	/**
-	 * This test tests the getWordStream method. We construct an array of String from the path
-	 * in a helper method in this class, and another array of String from 
-	 * WordProcessor.getWordStream(path). This fails whenever the size, or any element of these
-	 * arrays are not equal
+	 * This test tests the getWordStream method. We construct an array of String
+	 * from the path in a helper method in this class, and another array of String
+	 * from WordProcessor.getWordStream(path). This fails whenever the size, or any
+	 * element of these arrays are not equal
+	 * 
 	 * @throws IOException
 	 */
 	@Test
-	public void getWordStreamTest() throws IOException {
+	public void getWordStreamTest_ForFile() throws IOException {
 		String[] expectedWords = readFromFile(filepath);
 		String[] actualWords = WordProcessor.getWordStream(filepath).toArray(String[]::new);
-		assertEquals("words length", expectedWords.length, actualWords.length);
 		
+		assertEquals("words length", expectedWords.length, actualWords.length);
+
 		for (int i = 0; i < expectedWords.length; i++) {
 			assertEquals("word", expectedWords[i], actualWords[i]);
 		}
 	}
-	
+
 	/**
-	 * This method tests the isAdjacent() method. We construct an array of String from the path
-	 * in a helper method in this class. We use another helper method to determine the truth 
-	 * value of adjacencies between any 2 words. This fails whenever the truth value is
-	 * different for any of the pairs of 2 words in the dictionary
+	 * This test is trying to make sure that the isAdjacent method would always
+	 * return false for 2 same words
+	 */
+	@Test
+	public void isAdjacent_FalseForSame() {
+		String[] word1 = { "", "abc", "3333333333333333", "!!!" };
+		String[] word2 = word1.clone();
+
+		boolean expected = false;
+		for (int i = 0; i < word1.length; i++) {
+			assertEquals(expected, WordProcessor.isAdjacent(word1[i], word2[i]));
+		}
+	}
+
+	/**
+	 * This method tests the isAdjacent() method. We construct an array of String
+	 * from the path in a helper method in this class. We use another helper method
+	 * to determine the truth value of adjacencies between any 2 words. This fails
+	 * whenever the truth value is different for any of the pairs of 2 words in the
+	 * dictionary
+	 * 
 	 * @throws IOException
 	 */
 	@Test
-	public void isAdjacentTest() throws IOException{
+	public void isAdjacent_ForFile() throws IOException {
 		String[] words = readFromFile(filepath);
-		for (int i = 0; i < words.length; i ++) {
-			for (int j = i; j < words.length; j++) { 
+		words = removeDuplicate(words);
+		
+		for (int i = 0; i < words.length; i++) {
+			for (int j = i; j < words.length; j++) {
 				// every pair is only tested once. i.e. (i,j) = (j,i)
 				String prompt = String.format("is adjacent between %1$s and %2$s", words[i], words[j]);
-				assertEquals(prompt, testAdjacent(words[i], words[j]), 
-						WordProcessor.isAdjacent(words[i], words[j]));
+				assertEquals(prompt, testAdjacent(words[i], words[j]), WordProcessor.isAdjacent(words[i], words[j]));
 			}
 		}
 	}
 
-	
+	/**
+	 * This test uses an unique test file, that has only 2 words but has a lot of
+	 * them. Fails if the numberof vertices returned is not 2.
+	 * 
+	 * @throws IOException
+	 */
+	@Test
+	public void pupulateGraph_duplicateWords_correctNumVertices() throws IOException {
+		String path = "duplicate_test.txt"; // This is a different file. Need upload
+		GraphProcessor p = new GraphProcessor();
+		int actual = p.populateGraph(path);
+		int expected = 2;
+
+		assertEquals("Number of vertices ", expected, actual);
+	}
+
 	/**
 	 * This test tests whether the populateGraph() method returns the true number of
 	 * vertices added to the graph. We use WordProcessor.getWordStream method to
@@ -95,11 +121,12 @@ public class GraphProcessorTest {
 	 * @throws IOException
 	 */
 	@Test
-	public void populateGraphCorrectNumVertices() throws IOException {
+	public void populateGraph_correctNumVertices_ForFile() throws IOException {
 		GraphProcessor p = new GraphProcessor();
 		Integer actual = p.populateGraph(filepath);
 
 		String[] words = WordProcessor.getWordStream(filepath).toArray(String[]::new);
+		words = removeDuplicate(words);
 
 		Integer expected = words.length;
 
@@ -120,12 +147,14 @@ public class GraphProcessorTest {
 	 * @throws IOException
 	 */
 	@Test
-	public void correctShortestDistance() throws IOException {
+	public void correctShortestDistance_ForFile() throws IOException {
 		GraphProcessor p = new GraphProcessor();
 		p.populateGraph(filepath);
 		p.shortestPathPrecomputation();
 
 		String[] words = WordProcessor.getWordStream(filepath).toArray(String[]::new);
+		words = removeDuplicate(words);
+		
 		Graph<String> g = new Graph<String>();
 		for (String s : words) {
 			g.addVertex(s);
@@ -187,15 +216,17 @@ public class GraphProcessorTest {
 		return distance;
 
 	}
-	
+
 	/**
 	 * The helper method that determine whether 2 words are adjacent
+	 * 
 	 * @param str0
 	 * @param str1
 	 * @return true if str0 and str1 are adjacent
 	 */
 	private boolean testAdjacent(String str0, String str1) {
-		if (str0.equals(str1)) return false;
+		if (str0.equals(str1))
+			return false;
 		int dif = str0.length() - str1.length();
 		if (dif > 1 || dif < -1)
 			return false;
@@ -217,6 +248,7 @@ public class GraphProcessorTest {
 	@SuppressWarnings("resource")
 	/**
 	 * The method convert the dictionary file into an array of Strings
+	 * 
 	 * @param path
 	 * @return an array, in which each entry represents a word
 	 */
@@ -229,22 +261,16 @@ public class GraphProcessorTest {
 			fail("File not found!");
 		}
 
-		// Split into an array 
+		// Split into an array
 		String words[] = rawWords.toUpperCase().trim().split("\n");
-		
+
 		return words;
 	}
-}
 
-	/**
-	 * This method remove all the duplicate Strings in an array
-	 * @param lines
-	 * @return
-	 */
-/*	private String[] removeDuplicates(String[] lines) {
+	private static String[] removeDuplicate(String[] lines) {
 		int repeat = 0;
 		for (int t = 0; t < lines.length; t++) {
-			lines[t - repeat] = lines[t];
+			lines[t - repeat] = lines[t].trim();
 			for (int t1 = 0; t1 < t - repeat; t1++) {
 				if (lines[t1].equals(lines[t]))
 					repeat++;
@@ -254,7 +280,7 @@ public class GraphProcessorTest {
 		String[] nlines = new String[size];
 		for (int t = 0; t < size; t++)
 			nlines[t] = lines[t];
-		lines = nlines;
-		return lines;
-	}*/
-
+		return nlines;
+		
+	}
+}

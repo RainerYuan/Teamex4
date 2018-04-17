@@ -9,6 +9,15 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
+///////////////////////////////////////////////////////////////////////////////
+//assignment name: p4
+//Author:GRIFF ZHANG
+//Partner: Bowen Zhang, Jichen Zhang, JUNGE ZHANG, Tianyuan(Rainer) Yuan
+//Email : xzhang953@wisc.edu
+//due date: April 15th 2018
+//Credits: none
+//known bugs: none
+//////////////////////////////////////////////////////////////////////////////
 /**
  * Junit test class to test class @see Graph that implements @see GraphADT interface
  *
@@ -22,6 +31,7 @@ public class GraphTest {
 	
 	private static int numOfVertices = 0;
 	
+	@SuppressWarnings("unused")
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
 		vertices = new ArrayList<>();
@@ -57,6 +67,7 @@ public class GraphTest {
 		this.graph = null;
 	}
 
+	@SuppressWarnings("unused")
 	@Test
 	public final void addVertexShouldNotAllowNullVertexAddition() {
 		String vertex = this.graph.addVertex(null);
@@ -85,6 +96,7 @@ public class GraphTest {
 		}
 	}
 	
+	@SuppressWarnings("unused")
 	@Test
 	public final void addVertexShouldNotAllowDuplicateVertexAddition() {
 		String vertex1 = this.graph.addVertex(vertices.get(0));
@@ -99,6 +111,7 @@ public class GraphTest {
 		assertEquals("number of vertices in the graph", 1, verticesCount);
 	}
 
+	@SuppressWarnings("unused")
 	@Test
 	public final void addEdgeIfAnyOfTheVerticesDoesNotExist() {
 		// setup the graph by adding few vertices
@@ -302,6 +315,7 @@ public class GraphTest {
 		assertEquals("num of vertices in the graph", breakIndex, verticesCount);
 	}
 	
+	@SuppressWarnings("unused")
 	@Test
 	public final void removeVertexReturnsNonNull() {
 		// setup the graph by adding a few vertices and edges

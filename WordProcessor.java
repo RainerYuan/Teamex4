@@ -1,7 +1,7 @@
 ///////////////////////////////////////////////////////////////////////////////
 // assignment name: p4
 // Author: Tianyuan(Rainer) Yuan
-// Partner:BOWEN ZHANG GRIFF ZHANG JICHEN ZHANG JUNGE ZHANG
+// Partner: Bowen Zhang, GRIFF ZHANG, Jichen Zhang, JUNGE ZHANG
 // Email : tyuan22@wisc.edu
 // due date: April 15th 2018
 // CS Login: tyuan22
@@ -9,10 +9,8 @@
 // known bugs: none
 //////////////////////////////////////////////////////////////////////////////
 
-import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
-import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.stream.Stream;
 
@@ -36,7 +34,8 @@ public class WordProcessor {
      * @return Stream<String> stream of words read from the filepath
      * @throws IOException exception resulting from accessing the filepath
      */
-    public static Stream<String> getWordStream(String filepath) throws IOException {
+    @SuppressWarnings("resource")
+	public static Stream<String> getWordStream(String filepath) throws IOException {
 
         Stream<String> wStream = Files.lines(Paths.get(filepath));// create a stream objct through
                                                                   // filepaht
@@ -106,8 +105,7 @@ public class WordProcessor {
                                                                   // larger than 1, return false
         int length1 = word1.length();
         int length2 = word2.length();
-        String shorter = null;
-        String longer = null;
+        
         if (Math.abs(length1 - length2) >= 2) {
             return false;
         } else if (length1 != length2) {// when the length difference is 1 addition and deletion
