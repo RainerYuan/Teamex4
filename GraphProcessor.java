@@ -1,20 +1,30 @@
+import java.awt.geom.GeneralPath;
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Comparator;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
 import java.util.Queue;
 import java.util.Scanner;
+import java.util.Set;
 import java.util.Stack;
-
+import java.util.TreeMap;
+import java.util.function.Supplier;
+import java.util.stream.Stream;import com.sun.media.jfxmedia.events.NewFrameEvent;
 ///////////////////////////////////////////////////////////////////////////////
 //assignment name: p4
-//Author: Griff Zhang
-//Partner: Bowen Zhang, Jichen Zhang, Junge Zhang, Tianyuan(Rainer) Yuan
+//Author: Xiao(Griff) Zhang
+//Partner:BOWEN ZHANG GRIFF ZHANG JICHEN ZHANG JUNGE ZHANG
 //Email : xzhang953@wisc.edu
 //due date: April 15th 2018
+//CS Login: griff
 //Credits: none
 //known bugs: none
 //////////////////////////////////////////////////////////////////////////////
@@ -93,12 +103,12 @@ public class GraphProcessor {
         graph.addVertex(scanner.next()); verCount++;
         while (scanner.hasNext()) {
             String newWord = scanner.next();
-            if ((graph.addVertex(newWord)!=null)) {
+            if (graph.addVertex(newWord)!=null) { //  if the vertex can be added
                 verCount++;
-            }
-            for (String string1 : graph.getAllVertices()) {
-                if(WordProcessor.isAdjacent(string1, newWord)) {
-                    graph.addEdge(string1, newWord);
+                for (String string1 : graph.getAllVertices()) {
+                    if(WordProcessor.isAdjacent(string1, newWord)) {
+                        graph.addEdge(string1, newWord);
+                    }
                 }
             }
         }
