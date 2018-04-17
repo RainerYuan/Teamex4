@@ -268,9 +268,9 @@ public class GraphProcessorTest {
 	}
 
 	/**
-	 * This method 
+	 * This method removes duplicate members of a given string
 	 * @param lines
-	 * @return
+	 * @return a new string array without duplicates and nulls
 	 */
 	private static String[] removeDuplicate(String[] lines) {
 		int repeat = 0;
