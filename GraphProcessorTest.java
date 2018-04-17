@@ -11,7 +11,7 @@ import org.junit.Test;
 ///////////////////////////////////////////////////////////////////////////////
 //assignment name: p4
 //Author: Jichen Zhang, Junge Zhang
-//Partner: Bowen Zhang, GRIFF ZHANG, Tianyuan(Rainer) Yuan
+//Partner: Bowen Zhang, Griff Zhang, Tianyuan(Rainer) Yuan
 //Email : jzhang877@wisc.edu, jzhang875@wisc.edu
 //due date: April 15th 2018
 //Credits: none
@@ -141,7 +141,7 @@ public class GraphProcessorTest {
 	 * It fails if any of the shortest paths are different.
 	 * 
 	 * Precondition: populateGraph(), shortestPathPrecomputation() works fine
-	 * WordProcessor.getWordStream(), isAdjacent() works fine
+	 * 				 WordProcessor.getWordStream(), isAdjacent() works fine
 	 * 
 	 * 
 	 * @throws IOException
@@ -267,6 +267,11 @@ public class GraphProcessorTest {
 		return words;
 	}
 
+	/**
+	 * This method 
+	 * @param lines
+	 * @return
+	 */
 	private static String[] removeDuplicate(String[] lines) {
 		int repeat = 0;
 		for (int t = 0; t < lines.length; t++) {

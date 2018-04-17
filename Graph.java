@@ -1,7 +1,7 @@
 ///////////////////////////////////////////////////////////////////////////////
 // assignment name: p4
 // Author: Bowen Zhang
-// Partner: GRIFF ZHANG, Jichen Zhang, JUNGE ZHANG, Tianyuan(Rainer) Yuan
+// Partner: Griff Zhang, Jichen Zhang, Junge Zhang, Tianyuan(Rainer) Yuan
 // Email : bzhang296@wisc.edu
 // due date: April 15th 2018
 // CS Login: bowenz

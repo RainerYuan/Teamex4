@@ -11,8 +11,8 @@ import org.junit.Test;
 
 ///////////////////////////////////////////////////////////////////////////////
 //assignment name: p4
-//Author:GRIFF ZHANG
-//Partner: Bowen Zhang, Jichen Zhang, JUNGE ZHANG, Tianyuan(Rainer) Yuan
+//Author: Griff Zhang
+//Partner: Bowen Zhang, Jichen Zhang, Junge Zhang, Tianyuan(Rainer) Yuan
 //Email : xzhang953@wisc.edu
 //due date: April 15th 2018
 //Credits: none
